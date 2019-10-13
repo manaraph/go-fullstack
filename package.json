@@ -4,7 +4,16 @@
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ng": "ng",
+    "start": "npm-run-all --parallel start:web watch:server watch:test",
+    "start:backend": "node backend/server",
+    "start:web": "ng serve -o",
+    "test": "ng test --source-map=false",
+    "watch:test": "ng test --watch",
+    "watch:server": "node backend/server --watch",
+    "build": "ng build --prod",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "repository": {
     "type": "git",
@@ -15,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/manaraph/go-fullstack/issues"
   },
-  "homepage": "https://github.com/manaraph/go-fullstack#readme"
+  "homepage": "https://github.com/manaraph/go-fullstack#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "npm-run-all": "^4.1.5"
+  }
 }
