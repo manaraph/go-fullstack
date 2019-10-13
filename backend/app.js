@@ -1,8 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
+const DBUSER = process.env.DBUSER;
+const DBPASS = process.env.DBPASS;
+const DBCLUSTER = process.env.DBCLUSTER;
 const app = express();
 app.use(bodyParser.json());
+
+mongoose.connect(`mongodb+srv://${DBUSER}:${DBPASS}@${DBCLUSTER}.mongodb.net/test?retryWrites=true&w=majority`)
+  .then(() => {
+    console.log('Successfully connected to MongoDB Atlas!');
+  })
+  .catch((error) => {
+    console.log('Unable to connect to MongoDB Atlas!');
+    console.error(error);
+  });
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
