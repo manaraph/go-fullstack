@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm-run-all --parallel start:web watch:server watch:test",
-    "start:backend": "node backend/server",
-    "start:web": "ng serve -o",
+    "start": "npm-run-all --parallel watch:server start:web",
+    "start:server": "node backend/server",
+    "start:web": "ng serve -o --prefix frontend",
     "test": "ng test --source-map=false",
     "watch:test": "ng test --watch",
     "watch:server": "node backend/server --watch",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/manaraph/go-fullstack#readme",
   "dependencies": {
+    "@angular/cli": "^8.3.9",
     "body-parser": "^1.19.0",
     "mongoose": "^5.7.4",
     "npm-run-all": "^4.1.5"
